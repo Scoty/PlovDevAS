@@ -25,14 +25,14 @@
     <string name="snippet">Tsar Boris III Blvd 37</string>
     <!-- Partners Fragment -->
     <string name="title_thanks">Special Thanks</string>
-    <string name="thanks">We want to say big thanks to our sponsors! Whitout them this event would be just a dream in our eyes. You can tap the images below to go to their webpages and show them some love!</string>
+    <string name="thanks">We want to say big thanks to our sponsors! Without them this event would be just a dream in our eyes. You can tap the images below to go to their webpages and show them some love!</string>
     <!-- About Fragment -->
     <string name="about_desc">PlovDev is one day dev conference. The goal of the event is to bring together students and professional, which can exchange knowledge and experience and bring the IT community in the town on higher level. The diversity of the lectures is there to bring people with different interest together. The event is organized by Proxiad Bulgaria with the kind help of Hackafe.</string>
     <string name="about_day_of_the_event">The event will be held on 18 October, 2014</string>
     <!-- LectureDetails Activity -->
-    <string name="rating_desc">If you want, you can rate the lecture. Your vote is anonymous. Please be CARREFUL, you can\'t change your vote!</string>
+    <string name="rating_desc">If you want, you can rate the lecture. Your vote is anonymous. Please be CAREFUL, you can\'t change your vote!</string>
     <string name="rate">Rate !</string>
-    <string name="toast_rating_not_yet_avaible">Rating will be avaible after 18.10.2014&#820;</string>
+    <string name="toast_rating_not_yet_available">Rating will be available after 18.10.2014!</string>
     <string name="toast_already_voted">You have already voted for this lecture!</string>
     <!-- SpeakerDetails Activity -->
     <string name="lecture_list">Lectures List:</string>
