@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.proxiad.plovdev"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp" >
+
+    <TextView
+        android:id="@+id/nameSpeaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#43b3fb"
+        android:textStyle="bold" />
+
+    <com.proxiad.plovdev.utils.CircularImageView
+        android:id="@+id/imageSpeakerPortrait"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/nameSpeaker"
+        android:layout_centerHorizontal="true"
+        app:border="true"
+        app:shadow="true" />
+
+    <TextView
+        android:id="@+id/bioSpeaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageSpeakerPortrait"
+        android:layout_centerHorizontal="true"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

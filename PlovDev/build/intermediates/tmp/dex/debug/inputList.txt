@@ -1,0 +1,5 @@
+D:\AndroidProjects\PlovDev\PlovDev\build\intermediates\classes\debug
+D:\AndroidProjects\PlovDev\PlovDev\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-023fdab57173a893f6924f92d3bd1e30555315b5.jar
+D:\AndroidProjects\PlovDev\PlovDev\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-f2cde2b36513edea35ac673315941c09b45e6ecd.jar
+D:\AndroidProjects\PlovDev\PlovDev\build\intermediates\pre-dexed\debug\classes-06a25f09cd1f9e820c650ad482f5cd6de00586bf.jar
+D:\AndroidProjects\PlovDev\PlovDev\build\intermediates\pre-dexed\debug\classes-c7b640dde5da765412738910162c0f2c99e941cb.jar

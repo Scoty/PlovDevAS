@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PlovDev</string>
+    <!-- Fragment Title Names -->
+    <string name="first_day">Програмата</string>
+    <string name="speakers">Лектори</string>
+    <string name="venue">Местоположение</string>
+    <string name="partners">Партньори</string>
+	<string name="about">За събитието</string>
+    <!-- ActionBar Buttons Names -->
+    <string name="action_refresh">Обнови</string>
+    <string name="action_settings">Настройки</string>
+    <!-- Activity Titles -->
+    <string name="title_activity_lecture_details">Лекция</string>
+    <string name="title_activity_speaker_details">Лектор</string>
+    <string name="title_activity_settings">Настройки</string>
+    <!-- Nav Drawer -->
+    <string name="navigation_drawer_open">Отвори навигационото меню</string>
+    <string name="navigation_drawer_close">Затвори навигационото меню</string>
+    <!-- Venue Fragment -->
+    <string name="public_transport_label">Градски Транспорт</string>
+    <string name="public_transport_lines">Може да се привижите до мястото с автобусни линии №: 1, 4, 7, 9, 15, 25, 27. Може да натиснете върху маркера за стартиране на навигация до мястото на събитието.</string>
+    <string name="title_location">Международен панаир</string>
+    <string name="snippet">Бул. Цар Борис III 37</string>
+    <!-- Partners Fragment -->
+    <string name="title_thanks">Специални благодарности</string>
+    <string name="thanks">Благодарим на нашите спонсори и ентусиастите, без които събитието щеше да бъде само поредната мисъл, родила се в замечтания поглед на един отнесен в мечтите си програмист.</string>
+	<!-- About Fragment -->
+    <string name="about_desc">PlovDev е еднодневна ИТ конференция. Целта на събитието е да съберем студенти и хора от бизнеса, които да обменят опит и ентусиазъм и да помогнем на ИТ обществото в града да се развие. Лекторите и темите ще са разнообразни, за да привлечем хора с различни интереси. Събитието се организира от Proxiad България с помощта на Hackafe и медийната подкрепа на MediaCafe.</string>
+    <string name="about_day_of_the_event">Събитието ще се състои на 18 Октомври, 2014</string>
+    <!-- LectureDetails Activity -->
+    <string name="rating_desc">Ако желаете може да оцените лекцията. Вашият вот е анонимен. Моля, бъдете ВНИМАТЕЛНИ, не може да променяте оценката си след като сте гласували!</string>
+    <string name="rate">Оцени !</string>
+	<string name="toast_rating_not_yet_avaible">Гласуването ще бъде активно след 18.10.2014&#820;</string>
+    <string name="toast_already_voted">Вече сте гласували за тази лекция!</string>
+    <!-- SpeakerDetails Activity -->
+    <string name="lecture_list">Списък с лекции:</string>
+    <!-- Settings Activity -->
+    <string name="List_language_title">Изберете език</string>
+    <string name="List_language_summary">Смяна на основния език на приложението</string>
+    <string name="toast_text">Трябва да затворите приложението за да влезе в сила промяната на езика!</string>
+    <!-- Content Desc -->
+    <string name="content_desc_partner">Картинката на спонсора</string>
+    <string name="content_desc_main_activity_logo">Логото на PlovDev</string>
+	<string name="content_desc_link_to_the_calendar">Връзка към календара</string>
+
+</resources>

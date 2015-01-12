@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PlovDev</string>
+    <!-- Fragment Title Names -->
+    <string name="first_day">Schedule</string>
+    <string name="speakers">Speakers</string>
+    <string name="venue">Venue</string>
+    <string name="partners">Partners</string>
+    <string name="about">About</string>
+    <!-- ActionBar Buttons Names -->
+    <string name="action_refresh">Refresh</string>
+    <string name="action_settings">Settings</string>
+    <!-- Activity Titles -->
+    <string name="title_activity_lecture_details">Lecture</string>
+    <string name="title_activity_speaker_details">Speaker</string>
+    <string name="title_activity_settings">Settings</string>
+    <!-- Nav Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- Venue Fragment -->
+    <string name="public_transport_label">Public Transport Lines</string>
+    <string name="public_transport_lines">You can reach the venue using one of the following bus lines: 1, 4, 7, 9, 15, 25, 27. You can tap on the marker below to start navigation from your location to the event\'s place.</string>
+    <string name="title_location">International fair</string>
+    <string name="snippet">Tsar Boris III Blvd 37</string>
+    <!-- Partners Fragment -->
+    <string name="title_thanks">Special Thanks</string>
+    <string name="thanks">We want to say big thanks to our sponsors! Whitout them this event would be just a dream in our eyes. You can tap the images below to go to their webpages and show them some love!</string>
+    <!-- About Fragment -->
+    <string name="about_desc">PlovDev is one day dev conference. The goal of the event is to bring together students and professional, which can exchange knowledge and experience and bring the IT community in the town on higher level. The diversity of the lectures is there to bring people with different interest together. The event is organized by Proxiad Bulgaria with the kind help of Hackafe.</string>
+    <string name="about_day_of_the_event">The event will be held on 18 October, 2014</string>
+    <!-- LectureDetails Activity -->
+    <string name="rating_desc">If you want, you can rate the lecture. Your vote is anonymous. Please be CARREFUL, you can\'t change your vote!</string>
+    <string name="rate">Rate !</string>
+    <string name="toast_rating_not_yet_avaible">Rating will be avaible after 18.10.2014&#820;</string>
+    <string name="toast_already_voted">You have already voted for this lecture!</string>
+    <!-- SpeakerDetails Activity -->
+    <string name="lecture_list">Lectures List:</string>
+    <!-- Settings Activity -->
+    <string name="List_language_title">Select language</string>
+    <string name="List_language_summary">Change the application default language</string>
+    <string name="toast_text">You need to close the app for this change to take effect!</string>
+    <!-- Content Desc -->
+    <string name="content_desc_partner">Image of the partner</string>
+    <string name="content_desc_main_activity_logo">The logo of PlovDev</string>
+    <string name="content_desc_link_to_the_calendar">Link to the calendar</string>
+
+</resources>
