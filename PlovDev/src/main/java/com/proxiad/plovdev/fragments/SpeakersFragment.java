@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 
+import com.proxiad.plovdev.R;
+import com.proxiad.plovdev.activities.SpeakerDetailsActivity;
 import com.proxiad.plovdev.adapters.SpeakerAdapter;
 import com.proxiad.plovdev.utils.DataParser;
 

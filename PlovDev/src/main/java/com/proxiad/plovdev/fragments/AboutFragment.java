@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.proxiad.plovdev.R;
 
 public class AboutFragment extends Fragment {
 
@@ -22,7 +24,6 @@ public class AboutFragment extends Fragment {
 		buttonCalendar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO use calendar API instead
 				Intent startCalendar = new Intent(Intent.ACTION_VIEW);
 				startCalendar.setData(Uri.parse(calendarUrl));
 				startActivity(startCalendar);

@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.activities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.proxiad.plovdev.R;
 import com.proxiad.plovdev.beans.LectureBean;
 import com.proxiad.plovdev.utils.DataParser;
 import com.proxiad.plovdev.utils.ImageUtils;
@@ -63,7 +64,7 @@ public class LectureDetailsActivity extends Activity {
 				if (!isRateClicked) {
 					v.startAnimation(animAlpha);
 					isRateClicked = true;
-					Toast.makeText(v.getContext(), R.string.toast_rating_not_yet_avaible, Toast.LENGTH_SHORT).show();
+					Toast.makeText(v.getContext(), R.string.toast_rating_not_yet_available, Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(v.getContext(), R.string.toast_already_voted, Toast.LENGTH_SHORT).show();
 				}

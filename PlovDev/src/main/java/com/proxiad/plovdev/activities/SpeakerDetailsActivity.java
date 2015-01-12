@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.activities;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.proxiad.plovdev.R;
 import com.proxiad.plovdev.adapters.LectureForSpeakerAdapter;
 import com.proxiad.plovdev.beans.LectureBean;
 import com.proxiad.plovdev.beans.SpeakerBean;

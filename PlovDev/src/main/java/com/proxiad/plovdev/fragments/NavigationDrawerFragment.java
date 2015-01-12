@@ -1,5 +1,6 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.fragments;
 
+import com.proxiad.plovdev.R;
 import com.proxiad.plovdev.utils.DataParser;
 
 import android.app.Activity;

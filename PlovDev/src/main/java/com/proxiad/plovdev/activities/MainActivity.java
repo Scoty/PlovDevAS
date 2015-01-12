@@ -1,8 +1,15 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.activities;
 
 import java.util.List;
 import java.util.Locale;
 
+import com.proxiad.plovdev.fragments.AboutFragment;
+import com.proxiad.plovdev.fragments.MainFragment;
+import com.proxiad.plovdev.fragments.NavigationDrawerFragment;
+import com.proxiad.plovdev.fragments.PartnersFragment;
+import com.proxiad.plovdev.R;
+import com.proxiad.plovdev.fragments.SpeakersFragment;
+import com.proxiad.plovdev.fragments.VenueFragment;
 import com.proxiad.plovdev.utils.DataParser;
 import com.proxiad.plovdev.utils.ImageUtils;
 
@@ -204,8 +211,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
 	/**
 	 * Click listener for handling the clicks of the logo used in
 	 * activity_main.xml
-	 * 
-	 * @param View
+	 *
 	 */
 	public void onLogoClicked(View view) {
 		FragmentManager fragmentManager = getSupportFragmentManager();

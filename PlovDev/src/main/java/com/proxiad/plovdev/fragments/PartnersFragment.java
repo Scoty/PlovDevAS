@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.fragments;
 
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Bundle;
 
+import com.proxiad.plovdev.R;
 import com.proxiad.plovdev.adapters.PartnerAdapter;
 import com.proxiad.plovdev.utils.DataParser;
 
