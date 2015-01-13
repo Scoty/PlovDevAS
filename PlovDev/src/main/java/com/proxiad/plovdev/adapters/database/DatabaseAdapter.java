@@ -3,16 +3,19 @@ package com.proxiad.plovdev.adapters.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v4.database.DatabaseUtilsCompat;
 
 /**
  * Includes inner DataBase Helper class
  */
 public class DatabaseAdapter {
+    private static final String LOG_TAG = "DatabaseAdapter";
     //database info
-    private static final String DATABASE_NAME = "PlovDevDatabase";
-    private static final int DATABASE_VERSION = -1;
+    private static final String DATABASE_NAME = "plovDev.db";
+    private static final int DATABASE_VERSION = 1;
     //tables:
     private static final String DATABASE_TABLE_SPEAKERS = "speakers";
     private static final String DATABASE_TABLE_LECTURES = "lectures";
@@ -38,32 +41,36 @@ public class DatabaseAdapter {
     private static final String KEY_SPEAKER_USID = "speaker_usid";
     //partners table:
     //KEY_ID_PK
+    private static final String KEY_TITLE = "title";
     //KEY_PAGE_URL
+    private static final String KEY_LOGO = "logo";
 
-    private static final String CREATE_TABLE_SPEAKERS = "CREATE TABLE" +
+    private static final String CREATE_TABLE_SPEAKERS = "CREATE TABLE " +
             DATABASE_TABLE_SPEAKERS + "(" +
             KEY_ID_PK + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             KEY_USID + " TEXT NOT NULL, " +
             KEY_NAME + " TEXT NOT NULL, " +
-            KEY_IMG_URL + " TEXT, " +
-            KEY_PAGE_URL + " TEXT, " +
-            KEY_COMP_NAME + " TEXT, " +
-            KEY_COMP_URL + " TEXT, " +
-            KEY_BIO + " TEXT);";
+            KEY_IMG_URL + " TEXT NOT NULL, " +
+            KEY_PAGE_URL + " TEXT NOT NULL, " +
+            KEY_COMP_NAME + " TEXT NOT NULL, " +
+            KEY_COMP_URL + " TEXT NOT NULL, " +
+            KEY_BIO + " TEXT NOT NULL);";
 
-    private static final String CREATE_TABLE_LECTURES = "CREATE TABLE" +
+    private static final String CREATE_TABLE_LECTURES = "CREATE TABLE " +
             DATABASE_TABLE_LECTURES + "(" +
             KEY_ID_PK + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             KEY_NAME + " TEXT NOT NULL, " +
             KEY_START_TIME_STR + " TEXT NOT NULL, " +
             KEY_START_TIME + " DATETIME, " +
-            KEY_DESC + " TEXT, " +
-            KEY_SPEAKER_USID + " TEXT);";
+            KEY_DESC + " TEXT NOT NULL, " +
+            KEY_SPEAKER_USID + " TEXT NOT NULL);";
 
-    private static final String CREATE_TABLE_PARTNERS = "CREATE TABLE" +
+    private static final String CREATE_TABLE_PARTNERS = "CREATE TABLE " +
             DATABASE_TABLE_PARTNERS + "(" +
             KEY_ID_PK + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            KEY_PAGE_URL + " TEXT NOT NULL);";
+            KEY_TITLE + " TEXT NOT NULL, " +
+            KEY_PAGE_URL + " TEXT NOT NULL, " +
+            KEY_LOGO + " TEXT NOT NULL);";
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS ";
 
@@ -94,6 +101,7 @@ public class DatabaseAdapter {
             db.execSQL(DROP_TABLE + DATABASE_TABLE_SPEAKERS);
             db.execSQL(DROP_TABLE + DATABASE_TABLE_LECTURES);
             db.execSQL(DROP_TABLE + DATABASE_TABLE_PARTNERS);
+            onCreate(db);
         }
     }
 
@@ -185,12 +193,14 @@ public class DatabaseAdapter {
     }
 
     //Queries for the PARTNERS table
-    public long insertPartner(String pageUrl) {
+    public long insertPartner(String title, String pageUrl, String logo) {
         if (pageUrl == null) {
             return -1;
         } else {
             ContentValues partnerValues = new ContentValues();
+            partnerValues.put(KEY_TITLE, title);
             partnerValues.put(KEY_PAGE_URL, pageUrl);
+            partnerValues.put(KEY_LOGO, logo);
             return db.insert(DATABASE_TABLE_PARTNERS, null, partnerValues);
         }
     }
@@ -203,7 +213,11 @@ public class DatabaseAdapter {
         return db.delete(DATABASE_TABLE_PARTNERS, KEY_ID_PK + "=" + rowId, null) > 0;
     }
 
-    String[] columnsPartners = {KEY_ID_PK, KEY_NAME, KEY_START_TIME_STR, KEY_START_TIME, KEY_DESC, KEY_SPEAKER_USID};
+    public boolean deleteAllPartners() {
+        return db.delete(DATABASE_TABLE_PARTNERS, null, null) > 0;
+    }
+
+    String[] columnsPartners = {KEY_ID_PK, KEY_TITLE, KEY_PAGE_URL, KEY_LOGO};
 
     public Cursor getAllPartners() {
         return db.query(DATABASE_TABLE_PARTNERS, columnsPartners, null, null, null, null, null);
@@ -215,6 +229,13 @@ public class DatabaseAdapter {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public long getPartnersCount() {
+        long count = 0;
+        Cursor cursor = db.query(DATABASE_TABLE_PARTNERS, new String[]{KEY_ID_PK}, null, null, null, null, null);
+        count = cursor.getCount();
+        return count;
     }
 
 }
