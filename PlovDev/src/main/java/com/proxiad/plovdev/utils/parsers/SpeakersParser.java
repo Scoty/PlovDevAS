@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.proxiad.plovdev.adapters.database.DatabaseAdapter;
+import com.proxiad.plovdev.adapters.database.structure.TableSpeakers;
 import com.proxiad.plovdev.beans.LectureBean;
 import com.proxiad.plovdev.beans.SpeakerBean;
 import com.proxiad.plovdev.utils.ImageUtils;
@@ -51,8 +52,16 @@ public class SpeakersParser extends JsonToListParser {
         if (speakersCursor.moveToFirst()) {
             speakers = new ArrayList<SpeakerBean>();
             do {
-                //TODO Make this works when the enum git issue is fixed
-                speakers.add(null);
+                speakers.add(new SpeakerBean(
+                        speakersCursor.getString(TableSpeakers.KEY_USID.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_NAME.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_IMG_URL.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_PAGE_URL.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_COMP_NAME.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_COMP_URL.getIndex()),
+                        speakersCursor.getString(TableSpeakers.KEY_BIO.getIndex()),
+                        new ArrayList<LectureBean>()
+                ));
             } while (speakersCursor.moveToNext());
             return true;
         } else {

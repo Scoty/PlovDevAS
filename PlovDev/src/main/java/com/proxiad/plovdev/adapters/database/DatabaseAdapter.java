@@ -29,28 +29,6 @@ public class DatabaseAdapter {
         this.databaseHelper = new DatabaseHelper(context);
     }
 
-    private static class DatabaseHelper extends SQLiteOpenHelper {
-
-        DatabaseHelper(Context context) {
-            super(context, DbPlovDev.DATABASE_NAME, null, DbPlovDev.DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            db.execSQL(TableSpeakers.CREATE_TABLE_SPEAKERS);
-            db.execSQL(TableLectures.CREATE_TABLE_LECTURES);
-            db.execSQL(TablePartners.CREATE_TABLE_PARTNERS);
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_SPEAKERS);
-            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_LECTURES);
-            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_PARTNERS);
-            onCreate(db);
-        }
-    }
-
     public DatabaseAdapter open() {
         db = databaseHelper.getWritableDatabase();
         return this;
@@ -133,16 +111,27 @@ public class DatabaseAdapter {
         return db.delete(DbPlovDev.TABLE_LECTURES.toString(), TableLectures.KEY_ID_PK.toString() + "=" + rowId, null) > 0;
     }
 
+    public boolean deleteAllLectures() {
+        return db.delete(DbPlovDev.TABLE_LECTURES.toString(), null, null) > 0;
+    }
+
     public Cursor getAllLectures() {
-        return db.query(DbPlovDev.TABLE_LECTURES.toString(), TableSpeakers.KEY_ID_PK.getColumns(), null, null, null, null, null);
+        return db.query(DbPlovDev.TABLE_LECTURES.toString(), TableLectures.KEY_ID_PK.getColumns(), null, null, null, null, null);
     }
 
     public Cursor getLecture(long rowId) {
-        Cursor cursor = db.query(true, DbPlovDev.TABLE_LECTURES.toString(), TableSpeakers.KEY_ID_PK.getColumns(), TableLectures.KEY_ID_PK + "=" + rowId, null, null, null, null, null);
+        Cursor cursor = db.query(true, DbPlovDev.TABLE_LECTURES.toString(), TableLectures.KEY_ID_PK.getColumns(), TableLectures.KEY_ID_PK + "=" + rowId, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public long getLecturesCount() {
+        long count = 0;
+        Cursor cursor = db.query(DbPlovDev.TABLE_LECTURES.toString(), new String[]{TableLectures.KEY_ID_PK.toString()}, null, null, null, null, null);
+        count = cursor.getCount();
+        return count;
     }
 
     //Queries for the PARTNERS table
@@ -187,6 +176,28 @@ public class DatabaseAdapter {
         Cursor cursor = db.query(DbPlovDev.TABLE_PARTNERS.toString(), new String[]{TablePartners.KEY_ID_PK.toString()}, null, null, null, null, null);
         count = cursor.getCount();
         return count;
+    }
+
+    private static class DatabaseHelper extends SQLiteOpenHelper {
+
+        DatabaseHelper(Context context) {
+            super(context, DbPlovDev.DATABASE_NAME, null, DbPlovDev.DATABASE_VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL(TableSpeakers.CREATE_TABLE_SPEAKERS);
+            db.execSQL(TableLectures.CREATE_TABLE_LECTURES);
+            db.execSQL(TablePartners.CREATE_TABLE_PARTNERS);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_SPEAKERS);
+            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_LECTURES);
+            db.execSQL(DROP_TABLE + DbPlovDev.TABLE_PARTNERS);
+            onCreate(db);
+        }
     }
 
 }

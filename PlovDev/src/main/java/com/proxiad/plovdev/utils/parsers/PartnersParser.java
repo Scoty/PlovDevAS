@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.proxiad.plovdev.adapters.database.DatabaseAdapter;
+import com.proxiad.plovdev.adapters.database.structure.TablePartners;
 import com.proxiad.plovdev.beans.PartnerBean;
 import com.proxiad.plovdev.utils.ImageUtils;
 import com.proxiad.plovdev.utils.ImportUtils;
@@ -51,7 +52,10 @@ public class PartnersParser extends JsonToListParser {
         if (partnersCursor.moveToFirst()) {
             partners = new ArrayList<PartnerBean>();
             do {
-                partners.add(new PartnerBean(partnersCursor.getString(1), partnersCursor.getString(2)));
+                partners.add(new PartnerBean(
+                        partnersCursor.getString(TablePartners.KEY_TITLE.getIndex()),
+                        partnersCursor.getString(TablePartners.KEY_PAGE_URL.getIndex())
+                ));
             } while (partnersCursor.moveToNext());
             return true;
         } else {
