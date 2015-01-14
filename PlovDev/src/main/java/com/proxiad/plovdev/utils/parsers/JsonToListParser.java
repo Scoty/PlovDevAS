@@ -20,7 +20,7 @@ public abstract class JsonToListParser {
 
     public abstract boolean parseJson();
 
-    public static String getStringFromJson(JSONObject json, String name) throws JSONException {
+    public String getStringFromJson(JSONObject json, String name) throws JSONException {
         if (json.has(name)) {
             return json.getString(name);
         }

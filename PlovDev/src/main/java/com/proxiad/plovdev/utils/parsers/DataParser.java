@@ -163,15 +163,6 @@ public class DataParser {
         isDataParsed = true;
     }
 
-    private static void parseDataFromDataBase() {
-
-    }
-
-    public static void getDataFromJSONs() {
-
-    }
-
-
     public static List<LectureBean> getLectures() {
         if (!isDataParsed) {
             parseData();

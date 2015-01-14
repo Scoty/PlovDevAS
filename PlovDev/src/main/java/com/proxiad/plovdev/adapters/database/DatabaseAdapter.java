@@ -139,6 +139,10 @@ public class DatabaseAdapter {
         return db.delete(DATABASE_TABLE_SPEAKERS, KEY_ID_PK + "=" + rowId, null) > 0;
     }
 
+    public boolean deleteAllSpeakers() {
+        return db.delete(DATABASE_TABLE_SPEAKERS, null, null) > 0;
+    }
+
     String[] columnsSpeakers = {KEY_ID_PK, KEY_USID, KEY_NAME, KEY_IMG_URL, KEY_PAGE_URL, KEY_COMP_NAME, KEY_COMP_URL, KEY_BIO};
 
     public Cursor getAllSpeakers() {
@@ -151,6 +155,13 @@ public class DatabaseAdapter {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public long getSpeakersCount() {
+        long count = 0;
+        Cursor cursor = db.query(DATABASE_TABLE_SPEAKERS, new String[]{KEY_ID_PK}, null, null, null, null, null);
+        count = cursor.getCount();
+        return count;
     }
 
     //Queries for the LECTURES table
