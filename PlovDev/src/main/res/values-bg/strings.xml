@@ -32,7 +32,7 @@
     <!-- LectureDetails Activity -->
     <string name="rating_desc">Ако желаете може да оцените лекцията. Вашият вот е анонимен. Моля, бъдете ВНИМАТЕЛНИ, не може да променяте оценката си след като сте гласували!</string>
     <string name="rate">Оцени !</string>
-	<string name="toast_rating_not_yet_avaible">Гласуването ще бъде активно след 18.10.2014&#820;</string>
+	<string name="toast_rating_not_yet_available">Гласуването ще бъде активно след 18.10.2014!</string>
     <string name="toast_already_voted">Вече сте гласували за тази лекция!</string>
     <!-- SpeakerDetails Activity -->
     <string name="lecture_list">Списък с лекции:</string>

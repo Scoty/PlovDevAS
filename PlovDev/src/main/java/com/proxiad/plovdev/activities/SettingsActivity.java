@@ -1,4 +1,4 @@
-package com.proxiad.plovdev;
+package com.proxiad.plovdev.activities;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -7,6 +7,8 @@ import android.preference.PreferenceActivity;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.proxiad.plovdev.R;
 
 @SuppressWarnings("deprecation")
 // the absurd is that the PreferenceFragment is NOT in the support lib...

@@ -683,7 +683,7 @@ containing a value of this type.
         public static final int title_location=0x7f0b003c;
         public static final int title_thanks=0x7f0b003d;
         public static final int toast_already_voted=0x7f0b003e;
-        public static final int toast_rating_not_yet_avaible=0x7f0b003f;
+        public static final int toast_rating_not_yet_available=0x7f0b003f;
         public static final int toast_text=0x7f0b0040;
         public static final int venue=0x7f0b0041;
         public static final int wallet_buy_button_place_holder=0x7f0b0042;
