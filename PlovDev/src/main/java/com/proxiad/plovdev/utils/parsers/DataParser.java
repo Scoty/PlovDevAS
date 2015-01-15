@@ -1,7 +1,6 @@
 package com.proxiad.plovdev.utils.parsers;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.proxiad.plovdev.adapters.database.DatabaseAdapter;
 import com.proxiad.plovdev.beans.LectureBean;
@@ -11,7 +10,6 @@ import com.proxiad.plovdev.utils.ImageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class DataParser {
 
@@ -22,54 +20,43 @@ public class DataParser {
     private static final String LOG_TAG = "DataParser";
     public static Context context;
     private static boolean isDataParsed;
-    private static boolean isDatabaseFull;
 
     private static List<LectureBean> lectures;
     private static List<SpeakerBean> speakers;
-    private static List<SpeakerBean> speakersClean;
     private static List<PartnerBean> partners;
 
     private static void parseData() {
-
-        ImageUtils.putPlaceHolderDrawablesInCache(context);
         //adapter to connect to the database
         DatabaseAdapter dbAdapter = new DatabaseAdapter(context);
         dbAdapter.open();
-
         speakers = new SpeakersParser(context, dbAdapter).getList();
-        //TODO FIX ME: Awful design, the dataParser below touches the speakers ArrayList
-        speakers.add(new SpeakerBean("signin", new ArrayList<LectureBean>()));
-        speakers.add(new SpeakerBean("food", new ArrayList<LectureBean>()));
-        speakers.add(new SpeakerBean("coffee", new ArrayList<LectureBean>()));
-        speakers.add(new SpeakerBean("comments-alt", new ArrayList<LectureBean>()));
-        speakers.add(new SpeakerBean("signout", new ArrayList<LectureBean>()));
-
-
+        //put a placeholder images for the lectures without real speakers in the image cache and create the fake speakers
+        List<SpeakerBean> speakersWithAddedPlaceholderSpeakers = new ArrayList<SpeakerBean>(speakers);
+        String[] imgIds = ImageUtils.putPlaceHolderDrawablesInCache(context);
+        for (int i = 0; i < imgIds.length; i++) {
+            speakersWithAddedPlaceholderSpeakers.add(new SpeakerBean(imgIds[i], new ArrayList<LectureBean>()));
+        }
         lectures = new LecturesParser(context, dbAdapter).getList();
         partners = new PartnersParser(context, dbAdapter).getList();
-        //additional crap to match speakers with lectures
-
+        //add speaker to each lecture and populate the list of lectures for each speaker
         for (LectureBean lecture : lectures) {
-            for (SpeakerBean speaker : speakers) {
+            for (SpeakerBean speaker : speakersWithAddedPlaceholderSpeakers) {
                 if (lecture.getIdSpeaker().equals(speaker.getSpeakerId())) {
-                    Log.wtf(LOG_TAG, "Match: " + lecture.getIdSpeaker() + " = " + speaker.getSpeakerId());
                     lecture.setSpeaker(speaker);
                     speaker.getLectures().add(lecture);
                 }
             }
         }
-        // TODO FIX ME: Clear this logic, it is bad design
-        speakersClean = new ArrayList<SpeakerBean>(speakers);
-
-        ListIterator<SpeakerBean> listIterator = speakersClean.listIterator();
-
-        while (listIterator.hasNext()) {
-            SpeakerBean speaker = listIterator.next();
-            if (speaker.getImgUrl() == null) {
-                listIterator.remove();
+       /* for each lecture without speaker put error speaker to prevent nulls when getting the image of the lecture,
+        this should never happen!*/
+        for (LectureBean lecture : lectures) {
+            if (lecture.getSpeaker() == null) {
+                SpeakerBean speakerError = new SpeakerBean("ersror", new ArrayList<LectureBean>());
+                lecture.setSpeaker(speakerError);
             }
         }
-
+        //close the database
+        dbAdapter.close();
         isDataParsed = true;
     }
 
@@ -84,10 +71,13 @@ public class DataParser {
         if (!isDataParsed) {
             parseData();
         }
-        return speakersClean;
+        return speakers;
     }
 
     public static List<PartnerBean> getPartners() {
+        if (!isDataParsed) {
+            parseData();
+        }
         return partners;
     }
 
@@ -96,11 +86,15 @@ public class DataParser {
     }
 
     public static SpeakerBean getSpeaker(int location) {
-        return speakersClean.get(location);
+        return speakers.get(location);
     }
 
     public static void refreshData() {
-//        ImageUtils.invalidateCache();
-//        isDataParsed = false;
+        ImageUtils.invalidateCache();
+        DatabaseAdapter dbAdapter = new DatabaseAdapter(context);
+        dbAdapter.open();
+        dbAdapter.clearDatabase();
+        dbAdapter.close();
+        parseData();
     }
 }

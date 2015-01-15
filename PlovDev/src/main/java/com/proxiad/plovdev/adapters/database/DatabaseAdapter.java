@@ -38,6 +38,12 @@ public class DatabaseAdapter {
         databaseHelper.close();
     }
 
+    public void clearDatabase() {
+        deleteAllLectures();
+        deleteAllSpeakers();
+        deleteAllPartners();
+    }
+
     //Queries for the SPEAKERS table
     public long insertSpeaker(String name, String usid, String imgUrl, String pageUrl, String compName, String compUrl, String bio) {
         if (name == null || usid == null) {
