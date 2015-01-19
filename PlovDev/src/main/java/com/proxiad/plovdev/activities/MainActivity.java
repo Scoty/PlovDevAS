@@ -1,18 +1,5 @@
 package com.proxiad.plovdev.activities;
 
-import java.util.List;
-import java.util.Locale;
-
-import com.proxiad.plovdev.fragments.AboutFragment;
-import com.proxiad.plovdev.fragments.MainFragment;
-import com.proxiad.plovdev.fragments.NavigationDrawerFragment;
-import com.proxiad.plovdev.fragments.PartnersFragment;
-import com.proxiad.plovdev.R;
-import com.proxiad.plovdev.fragments.SpeakersFragment;
-import com.proxiad.plovdev.fragments.VenueFragment;
-import com.proxiad.plovdev.utils.parsers.DataParser;
-import com.proxiad.plovdev.utils.ImageUtils;
-
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +18,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.proxiad.plovdev.R;
+import com.proxiad.plovdev.fragments.AboutFragment;
+import com.proxiad.plovdev.fragments.MainFragment;
+import com.proxiad.plovdev.fragments.NavigationDrawerFragment;
+import com.proxiad.plovdev.fragments.PartnersFragment;
+import com.proxiad.plovdev.fragments.SpeakersFragment;
+import com.proxiad.plovdev.fragments.VenueFragment;
+import com.proxiad.plovdev.utils.ImageUtils;
+import com.proxiad.plovdev.utils.parsers.DataParser;
+
+import java.util.List;
+import java.util.Locale;
+
 public class MainActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     // tags for easier find
     private final String mainFragmentTag = "mainFragment";
@@ -46,8 +46,7 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
     private Fragment aboutFragment;
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    // holds the position of the currently selected item in the Nav Drawer
-    // fragment
+    // holds the position of the currently selected item in the Nav Drawer fragment
     private int position;
     // holds the title of the fragment being shown
     private CharSequence mTitle;
@@ -237,9 +236,11 @@ public class MainActivity extends FragmentActivity implements NavigationDrawerFr
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
+            /**
+             * Only show items in the action bar relevant to this screen
+             * if the drawer is not showing. Otherwise, let the drawer
+             * decide what to show in the action bar.
+             */
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
             return true;
