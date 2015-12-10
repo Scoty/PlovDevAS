@@ -21,6 +21,7 @@ public class GoogleFormsSubmitTask extends AsyncTask<String, Void, Boolean> {
 
         String lectureName = "entry.1566150510";
         int rating = 5;
+        int o = 0;
 
         try {
             StringEntity lecturePlusRating = new StringEntity(lectureName + "=" + rating, "UTF-8");
